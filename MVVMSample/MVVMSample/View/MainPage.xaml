@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MVVMSample"
+             xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="MVVMSample.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content >
+        <StackLayout>
+            <Button Text="Hide the Population" Command="{Binding HideCommand}"/>
+            <sfgrid:SfDataGrid x:Name="dataGrid"
+                ItemsSource="{Binding State}" 
+                       NavigationMode="Cell"
+                               ColumnSizer="Auto"
+                               SelectionMode="Multiple"
+                            AutoGenerateColumns="True">
+                <sfgrid:SfDataGrid.Columns>
+                    <sfgrid:GridNumericColumn MappingName="Population"
+                                          IsHidden="{Binding IsHidden}"/>
+                </sfgrid:SfDataGrid.Columns>
+            </sfgrid:SfDataGrid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
